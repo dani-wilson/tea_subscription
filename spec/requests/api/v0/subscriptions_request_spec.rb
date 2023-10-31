@@ -100,4 +100,34 @@ RSpec.describe "the tea subscription" do
       expect(parsed[:errors][0][:title]).to eq("Couldn't find Subscription with 'id'=11")
     end
   end
+
+  describe "viewing all tea subscriptions" do
+    it "HAPPY PATH: can view all tea subscriptions" do
+      create_list(:customer, 5)
+      
+      create_list(:tea, 20)
+
+      create_list(:subscription, 10, customer: Customer.all.sample, tea: Tea.all.sample)
+
+      get "/api/v0/subscriptions"
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      subscriptions = JSON.parse(response.body, symbolize_names: true)
+      
+      subscriptions.each do |subscription|
+        expect(subscription).to have_key(:id)
+        expect(subscription[:id]).to be_an(Integer)
+        expect(subscription).to have_key(:title)
+        expect(subscription[:title]).to be_a(String)
+        expect(subscription).to have_key(:price)
+        expect(subscription[:price]).to be_a(Float)
+        expect(subscription).to have_key(:status)
+        expect(subscription[:status]).to be_an(Integer)
+        expect(subscription).to have_key(:frequency)
+        expect(subscription[:frequency]).to be_a(String)
+      end
+    end
+  end
 end
