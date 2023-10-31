@@ -19,13 +19,13 @@ RSpec.describe "creating a tea subscription" do
     expect(response).to be_successful
     expect(response.status).to eq(201)
 
-    cs = Subscription.last
+    created_subscription = Subscription.last
 
     expect(JSON.parse(response.body)["message"]).to eq("Biweekly Orange Rooibos added.")
 
-    expect(cs.title).to eq("Biweekly Orange Rooibos")
-    expect(cs.price).to eq(12.5)
-    expect(cs.status).to eq(0)
-    expect(cs.frequency).to eq("Biweekly")
+    expect(created_subscription.title).to eq("Biweekly Orange Rooibos")
+    expect(created_subscription.price).to eq(12.5)
+    expect(created_subscription.status).to eq(0)
+    expect(created_subscription.frequency).to eq("Biweekly")
   end
 end
