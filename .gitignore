@@ -16,14 +16,12 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-/coverage
 
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
-coverage/
 
 
 # Ignore uploaded files in development.
