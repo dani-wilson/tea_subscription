@@ -12,6 +12,10 @@ class Api::V0::SubscriptionsController < ApplicationController
     render json: { message: "#{subscription_title} deleted." }
   end
 
+  def index
+    render json: Subscription.all
+  end
+
   private
   def subscription_params
     params.permit(:title, :price, :status, :frequency, :customer_id, :tea_id)
