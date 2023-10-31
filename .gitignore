@@ -16,11 +16,15 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/coverage
+
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
+coverage/
+
 
 # Ignore uploaded files in development.
 /storage/*
@@ -28,7 +32,9 @@
 /tmp/storage/*
 !/tmp/storage/
 !/tmp/storage/.keep
+/coverage
+
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-/coverage/
+/coverage
