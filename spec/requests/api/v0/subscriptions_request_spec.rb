@@ -14,8 +14,12 @@ RSpec.describe "the tea subscription" do
         "customer_id": customer.id,
         "tea_id": tea.id
       })
+
+      headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+
+      body = JSON.generate(subscription_params)
   
-      post "/api/v0/subscriptions", params: subscription_params, as: :json
+      post "/api/v0/subscriptions", headers: headers, params: body
   
       expect(response).to be_successful
       expect(response.status).to eq(201)
@@ -40,9 +44,13 @@ RSpec.describe "the tea subscription" do
         "frequency": "Biweekly",
         "tea_id": tea.id
       })
+
+      headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+
+      body = JSON.generate(subscription_params)
   
-      post "/api/v0/subscriptions", params: subscription_params, as: :json
-  
+      post "/api/v0/subscriptions", headers: headers, params: body
+    
       expect(response).to_not be_successful
       expect(response.status).to eq(404)
   
@@ -61,9 +69,13 @@ RSpec.describe "the tea subscription" do
         "frequency": "Biweekly",
         "customer_id": customer.id
       })
+
+      headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+
+      body = JSON.generate(subscription_params)
   
-      post "/api/v0/subscriptions", params: subscription_params, as: :json
-  
+      post "/api/v0/subscriptions", headers: headers, params: body
+    
       expect(response).to_not be_successful
       expect(response.status).to eq(404)
   
