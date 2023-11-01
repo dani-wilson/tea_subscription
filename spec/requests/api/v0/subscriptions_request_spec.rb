@@ -32,6 +32,8 @@ RSpec.describe "the tea subscription" do
       expect(created_subscription.price).to eq(12.5)
       expect(created_subscription.status).to eq(0)
       expect(created_subscription.frequency).to eq("Biweekly")
+      expect(created_subscription.customer_id).to eq(customer.id)
+      expect(created_subscription.tea_id).to eq(tea.id)
     end
   
     it "SAD PATH: cannot create a subscription without a customer id" do
@@ -140,6 +142,23 @@ RSpec.describe "the tea subscription" do
         expect(subscription).to have_key(:frequency)
         expect(subscription[:frequency]).to be_a(String)
       end
+    end
+
+    it "SAD PATH: cannot get information for an unexisting customer" do  
+      create(:customer)
+
+      create_list(:tea, 20)
+
+      create_list(:subscription, 10, customer: Customer.first, tea: Tea.all.sample)
+
+      get "/api/v0/customers/11/subscriptions"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      parsed = JSON.parse(response.body, symbolize_names: true)
+  
+      expect(parsed[:errors][0][:title]).to eq("Couldn't find Customer with 'id'=11")
     end
   end
 end
