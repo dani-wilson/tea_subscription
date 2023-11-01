@@ -23,7 +23,7 @@ To use Tea Subscription locally, you can fork and clone [this](https://github.co
   To test the full suite, run `bundle exec rspec`<br>
   To see a full coverage report with SimpleCov, use `open coverage/index.html`
 
-  ### Endpoint Use
+  ## Endpoint Use
   Endpoints can be tested in Postman using localhost:3000<br>
   Endpoints are as follows:
   1. Create a tea subscription for a customer<br>
