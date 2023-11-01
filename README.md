@@ -10,7 +10,7 @@ This application is a web application designed to produce APIs. The application 
 - [Rails 7.0.8](https://github.com/rails/rails)
 - [postgresql](https://github.com/postgres/postgres)
 
-### Getting Started
+## Getting Started
 To use Tea Subscription locally, you can fork and clone [this](https://github.com/dani-wilson/tea_subscription) repo
 
 ### Configuration
