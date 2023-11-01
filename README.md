@@ -20,7 +20,7 @@ To use Tea Subscription locally, you can fork and clone [this](https://github.co
 4. Run `rails db:{create,migrate,seed}` to setup and seed the database
 
   ### Testing
-  To test the full suite, run `bundle exec rspec`
+  To test the full suite, run `bundle exec rspec`<br>
   To see a full coverage report with SimpleCov, use `open coverage/index.html`
 
   ### Endpoint use
