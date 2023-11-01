@@ -28,7 +28,7 @@ To use Tea Subscription locally, you can fork and clone [this](https://github.co
   Endpoints are as follows:
   1. Create a tea subscription for a customer<br>
   ```
-  POST /api/v0/subscriptions<br><br>
+  POST /api/v0/subscriptions
   ```
   Example of a request via the body:
 
