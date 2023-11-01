@@ -1,6 +1,6 @@
 # Tea Subscription
 
-Tea Subscription is a mock take-home challenge during module 4 of Turing School of Software & Design's software engineering program, wherein the student is expected to complete the MVP in no more than 8 hours.
+Tea Subscription is a mock [take-home challenge](https://mod4.turing.edu/projects/take_home/take_home_be) during module 4 of Turing School of Software & Design's software engineering program, wherein the student is expected to complete the MVP in no more than 8 hours.
 
 ## About the Project
 This application is a web application designed to produce APIs. The application utilizes Ruby on Rails, with a PostgrSQL database.
@@ -27,23 +27,22 @@ To use Tea Subscription locally, you can fork and clone [this](https://github.co
   Endpoints can be tested in Postman using localhost:3000<br>
   Endpoints are as follows:
   1. Create a tea subscription for a customer<br>
-    - POST /api/v0/subscriptions<br>
-    - example of params:<br><br>
-     subscription_params = ({<br>
-        title: Biweekly Orange Rooibos,<br>
-        price: 12.50,<br>
-        status: 0,<br>
-        frequency: Biweekly,<br>
-        customer_id: [known customer id],<br>
-        tea_id: [known tea id]<br>
-      })<br><br>
-    
+  ```
+  POST /api/v0/subscriptions<br><br>
+  ```
+  Example of a request via the body:
 
-  2. Delete a customer's tea subscription<br>
-    - DELETE /api/v0/subscriptions/{{subscription_id}}</br>
+  <img src="public/images/post request.png" alt="postman post request example" width="" height="">
+
+  2. Delete a customer's tea subscription:<br>
+  ```
+  DELETE /api/v0/subscriptions/{{subscription_id}}
+  ```
     
   3. Get all tea subscriptions for a given customer<br>
-    - GET /api/v0/customers/{{customer_id}}/subscriptions
+  ```
+  GET /api/v0/customers/{{customer_id}}/subscriptions
+  ```
 
   ## JSON Response
 
@@ -118,3 +117,10 @@ To use Tea Subscription locally, you can fork and clone [this](https://github.co
     ]
   }
   ```
+
+  ## Schema
+  I chose to create three database tables: teas, customers, and subscriptions. I had thought about creating a fourth joins table, but ultimately decided it made more sense to use 'subscriptions' as a sort of joins table between customers and teas, with customer_id and tea_id being the foreign keys. Since I am a visual person, it was helpful for me to use [this website](https://www.dbdesigner.net/) to plan out my tables.
+  <img src="public/images/db design.png" alt="postman post request example" width="" height="">
+  <br>
+  <img src="public/images/schema.png" alt="postman post request example" width="" height="">
+
