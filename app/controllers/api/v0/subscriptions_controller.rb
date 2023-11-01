@@ -13,7 +13,9 @@ class Api::V0::SubscriptionsController < ApplicationController
   end
 
   def index
-    render json: Subscription.all
+    customer = Customer.find(params[:customer_id])
+    subscriptions = customer.subscriptions
+    render json: subscriptions, each_serializer: SubscriptionSerializer
   end
 
   private
