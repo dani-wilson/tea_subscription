@@ -101,15 +101,15 @@ RSpec.describe "the tea subscription" do
     end
   end
 
-  describe "viewing all tea subscriptions" do
-    it "HAPPY PATH: can view all tea subscriptions" do
-      create_list(:customer, 5)
+  describe "viewing all tea subscriptions for a customer" do
+    it "HAPPY PATH: can view all tea subscriptions for a customer" do
+      create(:customer)
       
       create_list(:tea, 20)
 
-      create_list(:subscription, 10, customer: Customer.all.sample, tea: Tea.all.sample)
+      create_list(:subscription, 10, customer: Customer.first, tea: Tea.all.sample)
 
-      get "/api/v0/subscriptions"
+      get "/api/v0/customers/1/subscriptions"
 
       expect(response).to be_successful
       expect(response.status).to eq(200)
